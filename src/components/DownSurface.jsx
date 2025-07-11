@@ -16,11 +16,19 @@ function DownSurface() {
         console.log(complexityButtonRef.current);
     }
 
+    function handlePlayButton() {
+        setIsActive(false);
+    }
 
     return (
         <div className="h-[80%] bg-[url('../assets/images/down-bg.png')] bg-[center] bg-[cover] bg-[no-repeat] flex items-center justify-center relative">
             <CardList />
-            <Layer ref={complexityButtonRef} onClickForComplexityButton={handleComplexityButton}/>
+            <Layer
+                ref={complexityButtonRef}
+                onClickComplexityButton={handleComplexityButton}
+                onClickPlayButton={handlePlayButton}
+                stateClass={isActive}
+            />
         </div>
     )
 }
