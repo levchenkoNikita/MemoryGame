@@ -10,7 +10,7 @@ const Layer = function ({ onClickComplexityButton, stateClass, onClickPlayButton
 
     const [activeObject, setActiveObject] = useState(gridMap[0].id);
 
-    const sortedGridMap = useMemo(() => {
+    const realGridMap = useMemo(() => {
         return gridMap.map(el => {
             return {
                 ...el,
@@ -35,7 +35,7 @@ const Layer = function ({ onClickComplexityButton, stateClass, onClickPlayButton
             <div className="text-[50px] flex flex-col items-center gap-y-[20px]">
                 <h3 className="select-none">Choose the complexity:</h3>
                 <ul className="flex items-center justify-center flex-wrap gap-x-[30px]">
-                    {sortedGridMap.map((element) => (
+                    {realGridMap.map((element) => (
                         <ComplexityButton
                             key={element.id}
                             id={element.id}

@@ -1,29 +1,28 @@
 import React, { useState } from "react";
 
-function CardItem({ id, imageBg, imageFr }) {
-    const [isActive, setIsActive] = useState(true);
+function CardItem({ id, value, imageBg, imageFr, onClickCard, isActive }) {
     const [isAside, setIsAside] = useState(false);
 
     return (
         <button
-            id={id}
             className={`
-                aspect-[1] w-full bg-white p-[20px] flex center justify-center rounded-[16px]
+                ${isAside ? '' : 'aspect-[1] w-full bg-white p-[20px] flex center justify-center rounded-[16px]'}
             `}
-            type="button">
+            type="button"
+            onClick={() => onClickCard(id, value)}
+            >
 
             <div
                 className={`
                     rounded-[8px] bg-center bg-no-repeat
-                    ${isActive ? `${imageBg} w-full aspect-[1] bg-cover` : `${imageFr} w-[50%] aspect-[1] bg-contain`} 
+                    ${isActive ? `${imageFr} w-[50%] aspect-[1] bg-contain` : `${imageBg} w-full aspect-[1] bg-cover`} 
+                    ${isAside ? 'hidden' : ''}
                 `}
             >
-                
+
             </div>
 
         </button>
-
-        // Сделать две кнопки(через тернарный оператор) и если состояние isAside true то кнопка с карточкой-фронт исчезает и появляется боковая сторона карточки
     )
 }
 

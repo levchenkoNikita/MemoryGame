@@ -1,51 +1,51 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import CardItem from "./UI/card/CardItem";
 
 const CardList = function ({ grid }) {
     const [cardsGrid, setCardsGrid] = useState([
-        { id: 1, value: 1, image: 'bg-[url("../assets/icons/birthday.svg")]' },
-        { id: 2, value: 1, image: 'bg-[url("../assets/icons/birthday.svg")]' },
-        { id: 3, value: 2, image: 'bg-[url("../assets/icons/birthday.svg")]' },
-        { id: 4, value: 2, image: 'bg-[url("../assets/icons/birthday.svg")]' },
+        { id: 1, value: 1, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
+        { id: 2, value: 1, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
+        { id: 3, value: 2, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
+        { id: 4, value: 2, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
 
-        { id: 5, value: 3, image: 'bg-[url("../assets/icons/birthday.svg")]' },
-        { id: 6, value: 3, image: 'bg-[url("../assets/icons/birthday.svg")]' },
-        { id: 7, value: 4, image: 'bg-[url("../assets/icons/birthday.svg")]' },
-        { id: 8, value: 4, image: 'bg-[url("../assets/icons/birthday.svg")]' },
+        { id: 5, value: 3, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
+        { id: 6, value: 3, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
+        { id: 7, value: 4, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
+        { id: 8, value: 4, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
 
-        { id: 9, value: 5, image: 'bg-[url("../assets/icons/birthday.svg")]' }, 
-        { id: 10, value: 5, image: 'bg-[url("../assets/icons/birthday.svg")]' },
-        { id: 11, value: 6, image: 'bg-[url("../assets/icons/birthday.svg")]' },
-        { id: 12, value: 6, image: 'bg-[url("../assets/icons/birthday.svg")]' },
-        
-        { id: 13, value: 7, image: 'bg-[url("../assets/icons/birthday.svg")]' },
-        { id: 14, value: 7, image: 'bg-[url("../assets/icons/birthday.svg")]' },
-        { id: 15, value: 8, image: 'bg-[url("../assets/icons/birthday.svg")]' },
-        { id: 16, value: 8, image: 'bg-[url("../assets/icons/birthday.svg")]' },
+        { id: 9, value: 5, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
+        { id: 10, value: 5, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
+        { id: 11, value: 6, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
+        { id: 12, value: 6, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
 
-        { id: 17, value: 9, image: 'bg-[url("../assets/icons/birthday.svg")]' },
-        { id: 18, value: 9, image: 'bg-[url("../assets/icons/birthday.svg")]' },
-        { id: 19, value: 10, image: 'bg-[url("../assets/icons/birthday.svg")]' },
-        { id: 20, value: 10, image: 'bg-[url("../assets/icons/birthday.svg")]' },
+        { id: 13, value: 7, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
+        { id: 14, value: 7, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
+        { id: 15, value: 8, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
+        { id: 16, value: 8, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
 
-        { id: 21, value: 11, image: 'bg-[url("../assets/icons/birthday.svg")]' },
-        { id: 22, value: 11, image: 'bg-[url("../assets/icons/birthday.svg")]' },
-        { id: 23, value: 12, image: 'bg-[url("../assets/icons/birthday.svg")]' },
-        { id: 24, value: 12, image: 'bg-[url("../assets/icons/birthday.svg")]' },
-        { id: 25, value: 13, image: 'bg-[url("../assets/icons/birthday.svg")]' },
+        { id: 17, value: 9, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
+        { id: 18, value: 9, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
+        { id: 19, value: 10, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
+        { id: 20, value: 10, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
 
-        { id: 26, value: 13, image: 'bg-[url("../assets/icons/birthday.svg")]' },
-        { id: 27, value: 14, image: 'bg-[url("../assets/icons/birthday.svg")]' },
-        { id: 28, value: 14, image: 'bg-[url("../assets/icons/birthday.svg")]' },
-        { id: 29, value: 15, image: 'bg-[url("../assets/icons/birthday.svg")]' },
-        { id: 30, value: 15, image: 'bg-[url("../assets/icons/birthday.svg")]' },
+        { id: 21, value: 11, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
+        { id: 22, value: 11, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
+        { id: 23, value: 12, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
+        { id: 24, value: 12, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
+        { id: 25, value: 13, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
 
-        { id: 31, value: 16, image: 'bg-[url("../assets/icons/birthday.svg")]' },
-        { id: 32, value: 16, image: 'bg-[url("../assets/icons/birthday.svg")]' },
-        { id: 33, value: 17, image: 'bg-[url("../assets/icons/birthday.svg")]' },
-        { id: 34, value: 17, image: 'bg-[url("../assets/icons/birthday.svg")]' },
-        { id: 35, value: 18, image: 'bg-[url("../assets/icons/birthday.svg")]' },
-        { id: 36, value: 18, image: 'bg-[url("../assets/icons/birthday.svg")]' }
+        { id: 26, value: 13, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
+        { id: 27, value: 14, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
+        { id: 28, value: 14, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
+        { id: 29, value: 15, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
+        { id: 30, value: 15, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
+
+        { id: 31, value: 16, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
+        { id: 32, value: 16, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
+        { id: 33, value: 17, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
+        { id: 34, value: 17, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
+        { id: 35, value: 18, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false },
+        { id: 36, value: 18, image: 'bg-[url("../assets/icons/birthday.svg")]', isActive: false }
     ]);
 
     const imageBg = 'bg-[url("../assets/images/card-back.png")]';
@@ -56,7 +56,52 @@ const CardList = function ({ grid }) {
         6: "grid-cols-6"
     };
 
-    const gridCol = gridClasses[grid]
+    const gridCol = gridClasses[grid];
+
+
+    const [activeCards, setActiveCards] = useState([
+        { id: 0, value: 0, isActive: false },
+        { id: 0, value: 0, isActive: false }
+    ]);
+
+    const realCardsGrid = useMemo(() => {
+        if (activeCards[0].id === 0) {
+            return cardsGrid.map((el) => {
+                return { ...el }
+            })
+        }
+        else if (activeCards[1].id === 0) {
+            return cardsGrid.map((el) => {
+                if (el.id === activeCards[0].id) {
+                    return { ...el, isActive: true };
+                }
+                return { ...el, isActive: false };
+            });
+        }
+        return cardsGrid.map((el) => {
+            if (el.id === activeCards[0].id) {
+                return { ...el, isActive: true };
+            }
+            else if (el.id === activeCards[1].id) {
+                return { ...el, isActive: true };
+            }
+            return { ...el };
+        });
+    }, [cardsGrid, activeCards]);
+
+    const handleClickCard = (id, value) => {
+        if (activeCards[0].id === Number(0)) {
+            setActiveCards([
+                { id: id, value: value, isActive: true },
+                { id: 0, value: 0, isActive: false }
+            ]);
+        } else {
+            setActiveCards([
+                { id: activeCards[0].id, value: activeCards[0].value, isActive: true },
+                { id: id, value: value, isActive: true }
+            ]);
+        }
+    }
 
     return (
         <div className={`
@@ -64,15 +109,18 @@ const CardList = function ({ grid }) {
                 p-[20px]
             `}>
             {
-                cardsGrid.map((el, index) => {
+                realCardsGrid.map((el, index) => {
                     if (index >= (Number(grid) ** 2)) {
                         return null;
                     }
                     return <CardItem
                         key={el.id}
                         id={el.id}
+                        value={el.value}
                         imageBg={imageBg}
                         imageFr={el.image}
+                        isActive={el.isActive}
+                        onClickCard={() => handleClickCard(el.id, el.value)} // el.id, el.value
                     />;
                 })
             }
