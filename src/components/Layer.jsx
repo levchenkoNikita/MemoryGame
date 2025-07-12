@@ -4,9 +4,8 @@ import ComplexityButton from "./UI/button/ComplexityButton";
 const Layer = function ({ onClickComplexityButton, stateClass, onClickPlayButton }) {
     const gridMap = [
         { id: 1, value: 2, isActive: false },
-        { id: 2, value: 3, isActive: false },
-        { id: 3, value: 4, isActive: false },
-        { id: 4, value: 5, isActive: false }
+        { id: 2, value: 4, isActive: false },
+        { id: 3, value: 6, isActive: false }
     ];
 
     const [activeObject, setActiveObject] = useState(gridMap[0].id);
