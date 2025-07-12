@@ -27,12 +27,6 @@ const CardList = function ({ grid }) {
             <CardItem grid={grid}/>
             <CardItem grid={grid}/>
             <CardItem grid={grid}/>
-
-            <CardItem grid={grid}/>
-            <CardItem grid={grid}/>
-
-            <CardItem grid={grid}/>
-            <CardItem grid={grid}/>
         </div>
     );
 }

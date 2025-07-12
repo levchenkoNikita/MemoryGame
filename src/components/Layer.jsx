@@ -1,16 +1,29 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useMemo } from "react";
 import ComplexityButton from "./UI/button/ComplexityButton";
 
-const Layer = React.forwardRef(function ({ onClickComplexityButton, stateClass, onClickPlayButton }, ref) {
-    const [gridMap, setGridMap] = useState([
-        { id: Date.now(), value: 2 },
-        { id: Date.now(), value: 3 },
-        { id: Date.now(), value: 4 },
-        { id: Date.now(), value: 5 }
-    ]);
+const Layer = function ({ onClickComplexityButton, stateClass, onClickPlayButton }) {
+    const gridMap = [
+        { id: 1, value: 2, isActive: false },
+        { id: 2, value: 3, isActive: false },
+        { id: 3, value: 4, isActive: false },
+        { id: 4, value: 5, isActive: false }
+    ];
 
+    const [activeObject, setActiveObject] = useState(gridMap[0].id);
 
+    const sortedGridMap = useMemo(() => {
+        return gridMap.map(el => {
+            return {
+                ...el,
+                isActive: Number(el.id) === activeObject
+            }
+        })
+    }, [gridMap, activeObject]);
+
+    const handleStateComplexityButton = (event) => {
+        setActiveObject(Number(event.target.id));
+        onClickComplexityButton(event.target.value);
+    }
 
     return (
         <div className={`
@@ -23,28 +36,20 @@ const Layer = React.forwardRef(function ({ onClickComplexityButton, stateClass, 
             <div className="text-[50px] flex flex-col items-center gap-y-[20px]">
                 <h3 className="select-none">Choose the complexity:</h3>
                 <ul className="flex items-center justify-center flex-wrap gap-x-[30px]">
-                    {gridMap.map((element, index) => (
-                        index === 0
-                            ?
-                            (<ComplexityButton
-                                ref={ref}
-                                key={element.id + index}
-                                grid={element.value}
-                                onClickComplexityButton={onClickComplexityButton}
-                            />)
-                            :
-                            <ComplexityButton
-                                ref={ref}
-                                key={element.id + index}
-                                grid={element.value}
-                                onClickComplexityButton={onClickComplexityButton}
-                            />
+                    {sortedGridMap.map((element) => (
+                        <ComplexityButton
+                            key={element.id}
+                            id={element.id}
+                            grid={element.value}
+                            isActive={element.isActive}
+                            onChangeStateComplexityButton={(event) => handleStateComplexityButton(event)}
+                        />
                     ))}
                 </ul>
                 <button className="mt-[20px] w-[200px] h-[100px] border-[2px] border-solid rounded-[10px]" onClick={onClickPlayButton}>Play</button>
             </div>
         </div>
     )
-});
+};
 
 export default Layer;
