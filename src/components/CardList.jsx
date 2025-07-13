@@ -59,14 +59,12 @@ const CardList = function ({ grid }) {
 
     const gridCol = gridClasses[grid];
 
-
     const [activeCards, setActiveCards] = useState([
         { id: 0, value: 0 },
         { id: 0, value: 0 }
     ]);
 
     const realCardsGrid = useMemo(() => {
-        console.log("cardsGrid")
         if (activeCards[0].id === 0) {
             return cardsGrid.map((el) => {
                 return { ...el }
@@ -77,34 +75,29 @@ const CardList = function ({ grid }) {
                 if (el.id === activeCards[0].id) {
                     return { ...el, isActive: true };
                 }
-                return { ...el, isActive: false };
+                return { ...el };
             });
         }
         return cardsGrid.map((el) => {
-            if (el.id === activeCards[0].id) {
+            if (el.id === activeCards[0].id || el.id === activeCards[1].id) {
                 return { ...el, isActive: true };
+            } else {
+                return { ...el };
             }
-            else if (el.id === activeCards[1].id) {
-                return { ...el, isActive: true };
-            }
-            return { ...el };
         });
     }, [cardsGrid, activeCards]);
 
     useEffect(() => {
-        console.log(activeCards)
         if (activeCards[0].id !== 0 && activeCards[1].id !== 0) {
-            if (activeCards[0].value === activeCards[1].value) {
-                setCardsGrid(cardsGrid.map((el) => {
-                    if (activeCards[0].id === el.id || activeCards[1].id === el.id) {
-                        return { ...el, isActive: true }
-                    }
-                    return { ...el }
-                }));
-                console.log(cardsGrid)
-            }
-            console.log("cardsGrid")
             const timer = setTimeout(() => {
+                if (activeCards[0].value === activeCards[1].value) {
+                    setCardsGrid(prevCards => prevCards.map((el) => {
+                        if (activeCards[0].id === el.id || activeCards[1].id === el.id) {
+                            return { ...el, isActive: true }
+                        }
+                        return { ...el }
+                    }));
+                }
                 setActiveCards([
                     { id: 0, value: 0 },
                     { id: 0, value: 0 }
@@ -113,26 +106,29 @@ const CardList = function ({ grid }) {
 
             return () => clearTimeout(timer);
         }
-        console.log(cardsGrid)
     }, [activeCards]);
 
     const handleClickCard = (id, value) => {
-        if (activeCards[0].id === Number(0)) {
+        if (activeCards[0].id === 0) {
             setActiveCards([
                 { id: id, value: value },
                 { id: 0, value: 0 }
             ]);
-        } else {
+        } else if(activeCards[1].id === 0) {
             setActiveCards([
                 { id: activeCards[0].id, value: activeCards[0].value },
                 { id: id, value: value }
             ]);
+        } else {
+            // обновление состояний и последующий "ререндинг" не происходят,
+            // что позволяет избежать ситуации, когда пользователь кликает по карточке во время проверки 
+            // совпадения двух активных карточек
         }
     }
 
     return (
         <div className={`
-                h-[80%] aspect-[1] grid ${gridCol} place-items-center gap-[24px] bg-[red]
+                h-[80%] aspect-[1] grid ${gridCol} place-items-center gap-[24px]
                 p-[20px]
             `}>
             {
