@@ -1,7 +1,8 @@
 import React, { useState, useMemo } from "react";
-import ComplexityButton from "./UI/button/ComplexityButton";
+import ComplexityButton from "../button/ComplexityButton";
+import ButtonStateGame from "../button/ButtonStateGame";
 
-const Layer = function ({ onClickComplexityButton, stateClass, onClickPlayButton }) {
+const LayerStart = function ({ onClickComplexityButton, stateClass, onClickPlayButton }) {
     const gridMap = [
         { id: 1, value: 2, isActive: false },
         { id: 2, value: 4, isActive: false },
@@ -45,10 +46,10 @@ const Layer = function ({ onClickComplexityButton, stateClass, onClickPlayButton
                         />
                     ))}
                 </ul>
-                <button className="mt-[20px] w-[200px] h-[100px] border-[2px] border-solid rounded-[10px]" onClick={onClickPlayButton}>Play</button>
+                <ButtonStateGame onClick={onClickPlayButton}>Play</ButtonStateGame>
             </div>
         </div>
     )
 };
 
-export default Layer;
+export default LayerStart;
