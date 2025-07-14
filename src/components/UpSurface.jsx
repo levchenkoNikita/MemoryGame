@@ -1,4 +1,3 @@
-import React from "react";
 import Timer from "./UI/timer/Timer";
 
 function UpSurface() {

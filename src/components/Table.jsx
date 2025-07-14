@@ -1,4 +1,3 @@
-import React from 'react';
 import UpSurface from './UpSurface';
 import DownSurface from './DownSurface';
 

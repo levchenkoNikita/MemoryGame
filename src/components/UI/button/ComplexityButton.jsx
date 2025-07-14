@@ -1,5 +1,3 @@
-import React from "react";
-
 const ComplexityButton = ({ grid, isActive, onChangeStateComplexityButton, id }) => {
     return (
         <li>

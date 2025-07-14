@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 function CardItem({ id, value, imageBg, imageFr, onClickCard, isActive, isAside }) {
 
     return (
