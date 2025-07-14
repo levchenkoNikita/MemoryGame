@@ -22,7 +22,7 @@ const CardList = function ({ grid, isRender }) {
     ]);
     const { setIsWin, setIsActiveLE } = useContext(winContext);
     const [countActiveCards, setCountActiveCards] = useState(0);
-    const realCardsGrid = useMemo(() => { return useRenderGrid(cardsGrid, activeCards, isAside, isRender) }, [cardsGrid, activeCards, isAside, isRender]);
+    const realCardsGrid = useMemo(() => { return useRenderGrid(cardsGrid, activeCards, isAside) }, [cardsGrid, activeCards, isAside]);
 
     useEffect(() => {
         if (activeCards[0].id !== 0 && activeCards[1].id !== 0 && isAside !== true) {
@@ -65,7 +65,7 @@ const CardList = function ({ grid, isRender }) {
         }
     }, [cardsGrid]);
 
-    useEffect(() => { setCardsGrid(getShuffledPairs(grid)) }, [grid]);
+    useEffect(() => { setCardsGrid(getShuffledPairs(grid)) }, [grid, isRender]);
 
     const handleClickCard = (id, value) => {
         if (isAside) {

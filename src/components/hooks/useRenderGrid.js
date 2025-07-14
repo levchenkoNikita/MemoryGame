@@ -1,9 +1,4 @@
-export const useRenderGrid = (cardsGrid, activeCards, isAside, isRender) => {
-    if (isRender) {
-        return cardsGrid.map((el) => {
-            return { ...el, isActive: false };
-        })
-    }
+export const useRenderGrid = (cardsGrid, activeCards, isAside) => {
     if (isAside) {
         if (activeCards[0].id === 0) {
             return cardsGrid.map((el) => {
