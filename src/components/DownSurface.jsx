@@ -9,12 +9,13 @@ function DownSurface() {
     const [gridCards, setGridCards] = useState(2);
     const [isActiveLS, setIsActiveLS] = useState(true);
     const [isActiveLE, setIsActiveLE] = useState(false);
+    const [isRenderCardList, setIsRenderCardList] = useState(false);
     const [isWin, setIsWin] = useState(false);
 
     function handleComplexityButton(value) {
         setGridCards(value);
     }
-
+    
     function handlePlayButton() {
         setIsActiveLS(false);
     }
@@ -23,6 +24,8 @@ function DownSurface() {
         setIsActiveLS(true);
         setIsActiveLE(false);
         setIsWin(false);
+
+        setIsRenderCardList(!isRenderCardList);
     }
 
     return (
@@ -32,7 +35,7 @@ function DownSurface() {
             ">
 
             <winContext.Provider value={{ setIsWin, setIsActiveLE }}>
-                <CardList grid={gridCards} />
+                <CardList grid={gridCards} isRender={isRenderCardList}/>
             </winContext.Provider>
 
             <LayerStart

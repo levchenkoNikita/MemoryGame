@@ -4,7 +4,7 @@ import { winContext } from "./DownSurface";
 import { getShuffledPairs } from "./scripts/sortCards";
 import { useRenderGrid } from "./hooks/useRenderGrid";
 
-const CardList = function ({ grid }) {
+const CardList = function ({ grid, isRender }) {
 
     const [cardsGrid, setCardsGrid] = useState(getShuffledPairs(grid));
     const imageBg = 'bg-[url("../assets/images/card-back.png")]';
@@ -22,7 +22,7 @@ const CardList = function ({ grid }) {
     ]);
     const { setIsWin, setIsActiveLE } = useContext(winContext);
     const [countActiveCards, setCountActiveCards] = useState(0);
-    const realCardsGrid = useMemo(() => { return useRenderGrid(cardsGrid, activeCards, isAside) }, [cardsGrid, activeCards, isAside]);
+    const realCardsGrid = useMemo(() => { return useRenderGrid(cardsGrid, activeCards, isAside, isRender) }, [cardsGrid, activeCards, isAside, isRender]);
 
     useEffect(() => {
         if (activeCards[0].id !== 0 && activeCards[1].id !== 0 && isAside !== true) {
