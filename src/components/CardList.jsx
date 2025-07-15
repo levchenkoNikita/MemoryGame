@@ -15,16 +15,17 @@ const CardList = function ({ grid, isRender }) {
     };
     const gridCol = gridClasses[grid];
     
+    const [isAside, setIsAside] = useState(false);
     const [activeCards, setActiveCards] = useState([
         { id: 0, value: 0 },
         { id: 0, value: 0 }
     ]);
     const { setIsWin, setIsActiveLE } = useContext(winContext);
     const [countActiveCards, setCountActiveCards] = useState(0);
-    const realCardsGrid = useMemo(() => { return useRenderGrid(cardsGrid, activeCards) }, [cardsGrid, activeCards]);
+    const realCardsGrid = useMemo(() => { return useRenderGrid(cardsGrid, activeCards, isAside) }, [cardsGrid, activeCards, isAside]);
 
     useEffect(() => {
-        if (activeCards[0].id !== 0 && activeCards[1].id !== 0) {
+        if (activeCards[0].id !== 0 && activeCards[1].id !== 0 && isAside !== true) {
             const timer = setTimeout(() => {
                 if (activeCards[0].value === activeCards[1].value) {
                     setCardsGrid(prevCards => prevCards.map((el) => {
@@ -44,7 +45,17 @@ const CardList = function ({ grid, isRender }) {
 
             return () => clearTimeout(timer);
         }
-    }, [activeCards]);
+    }, [activeCards, isAside]);
+
+    useEffect(() => {
+        if (isAside) {
+            const timer = setTimeout(() => {
+                setIsAside(false);
+            }, 100);
+
+            return () => clearTimeout(timer);
+        }
+    }, [isAside]);
 
     useEffect(() => {
         if( countActiveCards === Number(grid) ** 2) {
@@ -57,16 +68,21 @@ const CardList = function ({ grid, isRender }) {
     useEffect(() => { setCardsGrid(getShuffledPairs(grid)) }, [grid, isRender]);
 
     const handleClickCard = (id, value) => {
-        if (activeCards[0].id === 0) {
+        if (isAside) {
+            // происходит анимация переворота карточки
+        }
+        else if (activeCards[0].id === 0) {
             setActiveCards([
                 { id: id, value: value },
                 { id: 0, value: 0 }
             ]);
+            setIsAside(true);
         } else if (activeCards[1].id === 0) {
             setActiveCards([
                 { id: activeCards[0].id, value: activeCards[0].value },
                 { id: id, value: value }
             ]);
+            setIsAside(true);
         } else {
             // обновление состояний и последующий "ререндинг" не происходят,
             // что позволяет избежать ситуации, когда пользователь кликает по карточке во время проверки 
@@ -91,6 +107,7 @@ const CardList = function ({ grid, isRender }) {
                         imageBg={imageBg}
                         imageFr={el.image}
                         isActive={el.isActive ? true : false} // для избавления от избыточности повторных данных в cardsGrid
+                        isAside={el.isAside ? true : false} // для избавления от избыточности повторных данных в cardsGrid
                         onClickCard={() => handleClickCard(el.id, el.value)}
                     />;
                 })

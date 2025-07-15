@@ -1,13 +1,10 @@
-import './CardItem.css';
-
-function CardItem({ id, value, imageBg, imageFr, onClickCard, isActive }) {
+function CardItem({ id, value, imageBg, imageFr, onClickCard, isActive, isAside }) {
 
     return (
         <button
             className={`
-                aspect-[1] w-full rounded-[16px]
-                bg-white p-[20px] flex center justify-center
-                ${isActive ? 'animate-flip' : 'animate-flipBack'}
+                ${isAside ? 'h-full w-[1px]' : 'aspect-[1] w-full rounded-[16px]'}
+                bg-white p-[20px] flex center justify-center 
             `}
             type="button"
             disabled={isActive}
@@ -16,9 +13,11 @@ function CardItem({ id, value, imageBg, imageFr, onClickCard, isActive }) {
 
             <div
                 className={
-                    isActive
-                        ? `${imageFr} w-[50%] aspect-[1] bg-contain rounded-[8px] bg-center bg-no-repeat cardItem `
-                        : `${imageBg} w-full aspect-[1] bg-cover cursor-pointer rounded-[8px] bg-center bg-no-repeat cardItem`
+                    isAside
+                        ? 'hidden rounded-[8px] bg-center bg-no-repeat shrink'
+                        : isActive
+                            ? `${imageFr} w-[50%] aspect-[1] bg-contain rounded-[8px] bg-center bg-no-repeat`
+                            : `${imageBg} w-full aspect-[1] bg-cover cursor-pointer rounded-[8px] bg-center bg-no-repeat`
                 }
             >
             </div>
