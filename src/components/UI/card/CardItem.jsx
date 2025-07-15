@@ -3,8 +3,8 @@ function CardItem({ id, value, imageBg, imageFr, onClickCard, isActive, isAside 
     return (
         <button
             className={`
-                ${isAside ? 'h-full w-[1px]' : 'aspect-[1] w-full rounded-[16px]'}
-                bg-white p-[20px] flex center justify-center 
+                ${isAside ? 'h-full w-[10px] rounded-[4px]' : 'aspect-[1] w-full rounded-[16px] p-[20px]'}
+                bg-white flex center justify-center 
             `}
             type="button"
             disabled={isActive}
