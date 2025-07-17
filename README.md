@@ -9,7 +9,7 @@ At the beginning of the game, select the grid of the card from the possible opti
 # Launching the game
 
 The launch is performed by the following commands:
-- git clone https://github.com/your-username/memory-game.git -- clone the repository to any folder convenient for you
+- git clone https://github.com/levchenkoNikita/MemoryGame.git -- clone the repository to any folder convenient for you
 - npm install -- install dependencies
 - npm run dev -- running the game in development mode
 
