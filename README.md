@@ -1,3 +1,20 @@
+# Memory Game
+
+A card memorization game. The project was created on React + Vite.
+
+# How to play?
+
+At the beginning of the game, select the grid of the card from the possible options (2x2, 4x4, 6x6), then click on the "Play" button and the game begins. Your task is to find all pairs of cards.
+
+# Launching the game
+
+The launch is performed by the following commands:
+- git clone https://github.com/your-username/memory-game.git -- clone the repository to any folder convenient for you
+- npm install -- install dependencies
+- npm run dev -- running the game in development mode
+
+Or follow the link to gh-pages.
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
