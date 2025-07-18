@@ -4,7 +4,8 @@ A card memorization game. The project was created on React + Vite.
 
 # How to play?
 
-At the beginning of the game, select the grid of the card from the possible options (2x2, 4x4, 6x6), then click on the "Play" button and the game begins. Your task is to find all pairs of cards.
+At the beginning of the game, select the grid of the card from the possible options (2x2, 4x4, 6x6), then click on the "Play" button and the game begins. Your task is to find all pairs of cards. 
+It works stably on screens with a size of 1440x 1024 or higher
 
 # Launching the game
 
