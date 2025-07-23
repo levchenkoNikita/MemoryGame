@@ -30,8 +30,8 @@ function DownSurface() {
 
     return (
         <div className="
-                h-[80%] bg-[url('../assets/images/down-bg.png')] bg-[center] bg-[cover]
-                bg-[no-repeat] flex items-center justify-center relative overflow-hidden
+                h-[80%] bg-[url('/down-bg.png')] bg-center bg-cover
+                bg-no-repeat flex items-center justify-center relative overflow-hidden
             ">
 
             <winContext.Provider value={{ setIsWin, setIsActiveLE }}>

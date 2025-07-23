@@ -7,7 +7,7 @@ import { useRenderGrid } from "./hooks/useRenderGrid";
 const CardList = function ({ grid, isRender }) {
 
     const [cardsGrid, setCardsGrid] = useState(getShuffledPairs(grid));
-    const imageBg = 'bg-[url("../assets/images/card-back.png")]';
+    const imageBg = 'bg-[url("/card-back.png")]';
     const gridClasses = {
         2: "grid-cols-2",
         4: "grid-cols-4",
@@ -92,7 +92,7 @@ const CardList = function ({ grid, isRender }) {
 
     return (
         <div className={`
-                h-[80%] aspect-[1] grid ${gridCol} place-items-center gap-[24px]
+                h-[80%] aspect-[1] grid ${gridCol} place-items-center gap-[6px]
                 p-[20px]
             `}>
             {
@@ -103,6 +103,7 @@ const CardList = function ({ grid, isRender }) {
                     return <CardItem
                         key={el.id}
                         id={el.id}
+                        grid={grid}
                         value={el.value}
                         imageBg={imageBg}
                         imageFr={el.image}

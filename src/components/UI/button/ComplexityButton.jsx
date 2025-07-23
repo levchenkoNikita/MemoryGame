@@ -4,8 +4,8 @@ const ComplexityButton = ({ grid, isActive, onChangeStateComplexityButton, id })
             <button
                 id={id}
                 className={`
-                    w-[100px] h-[100px] flex items-center justify-center border-[2px] 
-                    border-solid rounded-[10px]
+                    w-[40px] aspect-[1] flex items-center justify-center border-[1px] 
+                    border-solid rounded-[6px]
                     ${isActive ? 'border-current' : 'border-transparent'}
                 `}
                 value={grid}

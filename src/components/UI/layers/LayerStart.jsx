@@ -8,7 +8,7 @@ const LayerStart = function ({ onClickComplexityButton, stateClass, onClickPlayB
         { id: 2, value: 4, isActive: false },
         { id: 3, value: 6, isActive: false }
     ];
-
+    
     const [activeObject, setActiveObject] = useState(gridMap[0].id);
 
     const realGridMap = useMemo(() => {
@@ -27,14 +27,14 @@ const LayerStart = function ({ onClickComplexityButton, stateClass, onClickPlayB
 
     return (
         <div className={`
-                text-[#FDD8A8] w-[80%] h-[80%] absolute top-[50%] left-[50%]
-                translate-[-50%] bg-[#641F16] flex flex-col items-center
-                justify-center gap-y-[45px] rounded-[37px] duration-[0.8s]
+                text-text w-[80%] h-[80%] absolute top-[50%] left-[50%]
+                translate-[-50%] bg-layers flex flex-col items-center
+                justify-center gap-y-[30px] rounded-3xl duration-800
                 ${stateClass ? '' : 'translate-y-[100%]'}
             `}>
-            <h2 className="text-[100px] text-center select-none">Answers hidden behind this layer</h2>
-            <div className="text-[50px] flex flex-col items-center gap-y-[20px]">
-                <h3 className="select-none">Choose the complexity:</h3>
+            <h2 className="text-2xl text-center select-none">Answers hidden behind this layer</h2>
+            <div className="text-lg flex flex-col items-center gap-y-[20px]">
+                <h3 className="text-2xl select-none">Choose the complexity:</h3>
                 <ul className="flex items-center justify-center flex-wrap gap-x-[30px]">
                     {realGridMap.map((element) => (
                         <ComplexityButton

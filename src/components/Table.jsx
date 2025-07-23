@@ -3,7 +3,7 @@ import DownSurface from './DownSurface';
 
 function Table() {
     return (
-        <div className="wrapper h-[100vh]">
+        <div className="h-screen font-Stint">
             <UpSurface>
 
             </UpSurface>
