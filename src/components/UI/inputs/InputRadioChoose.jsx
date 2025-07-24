@@ -7,7 +7,7 @@ const InputRadioChoose = ({ id, value, checked }) => {
                     checked
                         ? `h-full w-[10%] relative z-1 -translate-y-[4px]
                         bg-[url('/arrow-choose.png')] bg-contain bg-center bg-no-repeat`
-                        : `h-full w-[10%] bg-blue-300 border`
+                        : ``
                 }
                 htmlFor={id}
             >

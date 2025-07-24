@@ -1,12 +1,14 @@
-const InputRadioProgress = ({ id, value }) => {
+const InputRadioProgress = ({ id, value, checked }) => {
 
     return (
         <>
             <label
-                className={`
-                    h-full w-[10%] relative z-1 translate-y-[4px]
-                    bg-[url('/arrow-progress.png')] bg-contain bg-center bg-no-repeat
-                `}
+                className={
+                    checked
+                        ? `h-full w-[10%] relative z-1 translate-y-[4px]
+                        bg-[url('/arrow-progress.png')] bg-contain bg-center bg-no-repeat`
+                        : ``
+                }
                 htmlFor={id}
             >
                 

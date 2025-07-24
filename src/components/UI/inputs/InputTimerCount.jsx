@@ -1,4 +1,4 @@
-const InputTimerCount = ({ id, value, isLast }) => {
+const InputTimerCount = ({ value, isLast, onClick }) => {
     return (
         <>
             <label
@@ -15,11 +15,12 @@ const InputTimerCount = ({ id, value, isLast }) => {
                     }
                     `
                 }
-                htmlFor={id}
+                htmlFor={value}
+                onClick={() => onClick(value)}
             >
                 {value}
             </label>
-            <input className="hidden" type="radio" name="count" value={value} id={id} />
+            <input className="hidden" type="radio" name="count" value={value} />
         </>
 
     );
