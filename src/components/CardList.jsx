@@ -72,7 +72,6 @@ const CardList = function ({ grid, setIsWin, setIsActiveLE }) {
             setCountActiveCards(0);
             setIsWin(false);
             setIsActiveLE();
-            setIsStartPlay(false);
         }
     }, [countRound]);
 

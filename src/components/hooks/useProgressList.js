@@ -14,7 +14,7 @@ const useProgressList = () => {
         { id: 59, value: 10, isActive: false }
     ]);
 
-    return {progressList, setProgressList};
+    return [progressList, setProgressList];
 }
 
 export default useProgressList;
