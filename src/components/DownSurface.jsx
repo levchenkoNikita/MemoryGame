@@ -1,15 +1,12 @@
-import React, { createContext, useState } from "react";
+import {  useState } from "react";
 import CardList from "./CardList";
 import LayerStart from "./UI/layers/LayerStart";
 import LayerEnd from "./UI/layers/LayerEnd";
 
-const winContext = createContext();
-
-function DownSurface() {
+function DownSurface( { onClickPlayButton, isStartPlay, isEndPlay } ) {
     const [gridCards, setGridCards] = useState(2);
     const [isActiveLS, setIsActiveLS] = useState(true);
     const [isActiveLE, setIsActiveLE] = useState(false);
-    const [isRenderCardList, setIsRenderCardList] = useState(false);
     const [isWin, setIsWin] = useState(false);
 
     function handleComplexityButton(value) {
@@ -18,6 +15,7 @@ function DownSurface() {
     
     function handlePlayButton() {
         setIsActiveLS(false);
+        onClickPlayButton();
     }
 
     function handleRestartButton() {
@@ -25,7 +23,7 @@ function DownSurface() {
         setIsActiveLE(false);
         setIsWin(false);
 
-        setIsRenderCardList(!isRenderCardList);
+        isEndPlay();
     }
 
     return (
@@ -34,10 +32,12 @@ function DownSurface() {
                 bg-no-repeat flex items-center justify-center relative overflow-hidden
             ">
 
-            <winContext.Provider value={{ setIsWin, setIsActiveLE }}>
-                <CardList grid={gridCards} isRender={isRenderCardList}/>
-            </winContext.Provider>
-
+            {
+                isStartPlay 
+                ? <CardList grid={gridCards} setIsWin={(res) => setIsWin(res)} setIsActiveLE={() => setIsActiveLE(true)}/>
+                : null
+            }
+            
             <LayerStart
                 onClickComplexityButton={handleComplexityButton}
                 onClickPlayButton={handlePlayButton}
@@ -50,4 +50,3 @@ function DownSurface() {
 }
 
 export default DownSurface;
-export { winContext };

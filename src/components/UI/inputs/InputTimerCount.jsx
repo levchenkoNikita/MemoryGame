@@ -1,7 +1,6 @@
 const InputTimerCount = ({ value, isLast, onClick }) => {
     return (
-        <>
-            <label
+            <button
                 className={
                     `h-full w-[10%]
                     flex items-center justify-center relative
@@ -15,14 +14,10 @@ const InputTimerCount = ({ value, isLast, onClick }) => {
                     }
                     `
                 }
-                htmlFor={value}
                 onClick={() => onClick(value)}
             >
                 {value}
-            </label>
-            <input className="hidden" type="radio" name="count" value={value} />
-        </>
-
+            </button>
     );
 }
 

@@ -1,6 +1,6 @@
 import ButtonStateGame from "../button/ButtonStateGame";
 
-const LayerEnd = ({isWin, stateClass, onClick}) => {
+const LayerEnd = ({ isWin, stateClass, onClick }) => {
     return (
         <div className={`
                 text-text text-3xl h-[50%] aspect-[1] absolute top-[50%] left-[50%]

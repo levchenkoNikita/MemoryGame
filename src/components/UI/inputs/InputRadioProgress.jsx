@@ -4,14 +4,15 @@ const InputRadioProgress = ({ id, value, checked }) => {
         <>
             <label
                 className={
-                    checked
-                        ? `h-full w-[10%] relative z-1 translate-y-[4px]
-                        bg-[url('/arrow-progress.png')] bg-contain bg-center bg-no-repeat`
-                        : ``
+                    `
+                        h-full w-[10%] relative z-1 translate-y-[4px]
+                        bg-contain bg-center bg-no-repeat
+                        ${checked ? "bg-[url('/arrow-progress.png')]" : "bg-transparent"}
+                    `
                 }
                 htmlFor={id}
             >
-                
+
             </label>
             <input
                 className={`hidden`}

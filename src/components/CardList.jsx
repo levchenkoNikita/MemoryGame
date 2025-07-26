@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useContext } from "react";
 import CardItem from "./UI/card/CardItem";
-import { winContext } from "./DownSurface";
 import { getShuffledPairs } from "./scripts/sortCards";
 import { useRenderGrid } from "./hooks/useRenderGrid";
+import { countRoundContext } from "./Table";
 
-const CardList = function ({ grid, isRender }) {
+const CardList = function ({ grid, setIsWin, setIsActiveLE }) {
 
     const [cardsGrid, setCardsGrid] = useState(getShuffledPairs(grid));
     const imageBg = 'bg-[url("/card-back.png")]';
@@ -14,13 +14,12 @@ const CardList = function ({ grid, isRender }) {
         6: "grid-cols-6"
     };
     const gridCol = gridClasses[grid];
-    
+    const { countRound, setCountRound, setIsStartPlay } = useContext(countRoundContext);
     const [isAside, setIsAside] = useState(false);
     const [activeCards, setActiveCards] = useState([
         { id: 0, value: 0 },
         { id: 0, value: 0 }
     ]);
-    const { setIsWin, setIsActiveLE } = useContext(winContext);
     const [countActiveCards, setCountActiveCards] = useState(0);
     const realCardsGrid = useMemo(() => { return useRenderGrid(cardsGrid, activeCards, isAside) }, [cardsGrid, activeCards, isAside]);
 
@@ -35,6 +34,9 @@ const CardList = function ({ grid, isRender }) {
                         return { ...el }
                     }));
                     setCountActiveCards(prevCount => prevCount + 2);
+                }
+                else {
+                    setCountRound(prev => prev - 1);
                 }
                 // setIsAside(true); -- доделать обратную анимацию
                 setActiveCards([
@@ -61,11 +63,20 @@ const CardList = function ({ grid, isRender }) {
         if( countActiveCards === Number(grid) ** 2) {
             setCountActiveCards(0);
             setIsWin(true);
-            setIsActiveLE(true);
+            setIsActiveLE();
         }
     }, [cardsGrid]);
 
-    useEffect(() => { setCardsGrid(getShuffledPairs(grid)) }, [grid, isRender]);
+    useEffect( () => {
+        if(countRound <= 0) {
+            setCountActiveCards(0);
+            setIsWin(false);
+            setIsActiveLE();
+            setIsStartPlay(false);
+        }
+    }, [countRound]);
+
+    useEffect(() => { setCardsGrid(getShuffledPairs(grid)) }, [grid]);
 
     const handleClickCard = (id, value) => {
         if (isAside) {

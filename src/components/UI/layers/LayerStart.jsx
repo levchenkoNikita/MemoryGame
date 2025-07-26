@@ -4,9 +4,9 @@ import ButtonStateGame from "../button/ButtonStateGame";
 
 const LayerStart = function ({ onClickComplexityButton, stateClass, onClickPlayButton }) {
     const gridMap = [
-        { id: 1, value: 2, isActive: false },
-        { id: 2, value: 4, isActive: false },
-        { id: 3, value: 6, isActive: false }
+        { id: 100, value: 2, isActive: false },
+        { id: 101, value: 4, isActive: false },
+        { id: 102, value: 6, isActive: false }
     ];
     
     const [activeObject, setActiveObject] = useState(gridMap[0].id);
