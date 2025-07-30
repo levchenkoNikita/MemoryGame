@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Stint Ultra Condensed';
+  src: url('../fonts/StintUltraCondensed-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --font-Stint: 'Stint Ultra Condensed', sans-serif;
 
@@ -8,10 +16,40 @@
   --color-timer: #FDD8A8;
 }
 
-@font-face {
-  font-family: 'Stint Ultra Condensed';
-  src: url('../fonts/StintUltraCondensed-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+@layer utilities {
+  .text-clamp-ah2 { /* Answers hidden... */
+    font-size: clamp(24px, 7vw, 70px);
+  }
+
+  .text-clamp-cc3 { /* Choose Complexity */
+    font-size: clamp(24px, 7vw, 50px);
+  }
+
+  .text-clamp-cb { /* Complexity button */
+    font-size: clamp(18px, 7vw, 40px);
+  }
+
+  .w-clamp { /* width for layer and timer */
+    width: clamp(280px, 80%, 800px);
+  }
+
+  .h-clamp { /* height for layer */
+    height: clamp(200px, 80%, 800px);
+  }
+
+  .size-cb-clamp { /*for complexity button */
+    width: clamp(40px, 15vw, 100px);
+    aspect-ratio: 1;
+    border-radius: clamp(4px, 3vw, 15px);
+  }
+
+  .size-pb-clamp { /* for play button */
+    width: clamp(100px, 30vw, 200px);
+    height: clamp(50px, 20vw, 100px);
+    border-radius: clamp(6px, 3vw, 15px);
+  }
+
+  .gap-clamp {
+    row-gap: clamp(20px, 5vw, 40px);
+  }
 }

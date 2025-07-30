@@ -19,7 +19,7 @@ function Table() {
     }
 
     return (
-        <div className="h-screen font-Stint">
+        <div className="w-full h-screen font-Stint overflow-hidden">
             <countRoundContext.Provider value={ { countRound, setCountRound, setCopyCountRound, isStartPlay, setIsStartPlay} }>
                 <UpSurface>
 

@@ -75,7 +75,7 @@ function Timer() {
     }, [countRound])
 
     return (
-        <div className="w-[70%] h-[70%] flex flex-col-reverse">
+        <div className="w-clamp h-[70%] flex flex-col-reverse">
             <div className={`h-[25%] w-full flex items-center justify-between relative`}>
                 {chooseList.map((el) => {
                     return <InputRadioChoose key={el.value} id={el.id} value={el.value} checked={el.isActive} />

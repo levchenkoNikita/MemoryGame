@@ -1,7 +1,7 @@
 const ButtonStateGame = ({ onClick, children }) => {
-    return (
+    return ( // w-[100px] h-[50px] rounded-[6px]
         <button
-            className=" w-[100px] h-[50px] border-[1px] border-solid rounded-[6px]"
+            className="size-pb-clamp border-[1px] border-solid "
             onClick={onClick}
         >
             {children}

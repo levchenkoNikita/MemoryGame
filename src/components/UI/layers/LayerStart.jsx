@@ -25,16 +25,16 @@ const LayerStart = function ({ onClickComplexityButton, stateClass, onClickPlayB
         onClickComplexityButton(event.target.value);
     }
 
-    return (
+    return ( //max-w-[800px] w-full max-h-[800px] h-[80%]
         <div className={`
-                text-text w-[80%] h-[80%] absolute top-[50%] left-[50%]
+                text-text w-clamp h-clamp absolute top-[50%] left-[50%]
                 translate-[-50%] bg-layers flex flex-col items-center
                 justify-center gap-y-[30px] rounded-3xl duration-800
                 ${stateClass ? '' : 'translate-y-[100%]'}
             `}>
-            <h2 className="text-2xl text-center select-none">Answers hidden behind this layer</h2>
-            <div className="text-lg flex flex-col items-center gap-y-[20px]">
-                <h3 className="text-2xl select-none">Choose the complexity:</h3>
+            <h2 className="text-clamp-ah2 text-center select-none">Answers hidden behind this layer</h2>
+            <div className="text-clamp-cb flex flex-col items-center gap-clamp">
+                <h3 className="text-clamp-cc3 select-none">Choose the complexity:</h3>
                 <ul className="flex items-center justify-center flex-wrap gap-x-[30px]">
                     {realGridMap.map((element) => (
                         <ComplexityButton
