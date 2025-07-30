@@ -102,7 +102,7 @@ const CardList = function ({ grid, setIsWin, setIsActiveLE }) {
 
     return (
         <div className={`
-                w-[80%] aspect-[1] grid ${gridCol} place-items-center gap-[6px]
+                size-card-clamp grid ${gridCol} place-items-center gap-[6px]
                 p-[20px]
             `}>
             {

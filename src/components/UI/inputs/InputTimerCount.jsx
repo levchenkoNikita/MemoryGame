@@ -8,7 +8,7 @@ const InputTimerCount = ({ value, isLast, onClick }) => {
                         ? '' 
                         : 
                         `
-                            after:content-[''] after:w-[4px] after:aspect-[1] after:bg-black after:rounded-full
+                            after:content-[''] after:w-[10%] after:aspect-[1] after:bg-black after:rounded-full
                             after:absolute after:top-[50%] after:left-[100%] after:-translate-[50%]
                         ` 
                     }

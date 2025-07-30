@@ -83,7 +83,7 @@ function Timer() {
                 <Roller />
             </div>
 
-            <div className="w-full h-[50%] bg-timer flex items-center justify-between">
+            <div className="w-full h-[50%] bg-timer flex items-center justify-between text-clamp-cb">
                 {countList.map((el) => {
                     if (el == 10) {
                         return <InputTimerCount key={el} value={el} isLast={true} onClick={(value) => handleChooseComplexity(value)} />

@@ -3,10 +3,10 @@ import ButtonStateGame from "../button/ButtonStateGame";
 const LayerEnd = ({ isWin, stateClass, onClick }) => {
     return (
         <div className={`
-                text-text text-3xl h-[50%] aspect-[1] absolute top-[50%] left-[50%]
+                text-text text-3xl size-le-clamp absolute top-[50%] left-[50%]
                 translate-[-50%] bg-layers flex flex-col items-center
                 justify-center gap-y-[26px] rounded-[20px] duration-800
-                ${stateClass ? '' : 'translate-y-[100%]'}
+                ${stateClass ? '' : 'translate-y-[180%]'}
             `}>
             {isWin
                 ? <h1 className="text-[30px] text-center select-none">You win!</h1>

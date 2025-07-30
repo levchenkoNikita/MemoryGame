@@ -37,6 +37,16 @@
     height: clamp(200px, 80%, 800px);
   }
 
+  .size-le-clamp { /* for layer end*/
+    width: clamp(280px, 80%, 600px);
+    aspect-ratio: 1;
+  }
+
+  .size-card-clamp {
+    width: clamp(280px, 80%, 800px);
+    aspect-ratio: 1;
+  }
+
   .size-cb-clamp { /*for complexity button */
     width: clamp(40px, 15vw, 100px);
     aspect-ratio: 1;
