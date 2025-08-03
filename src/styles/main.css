@@ -43,7 +43,7 @@
   }
 
   .size-card-clamp {
-    width: clamp(280px, 80%, 800px);
+    width: clamp(300px, 80%, 800px); /*Было 280px*/
     aspect-ratio: 1;
   }
 

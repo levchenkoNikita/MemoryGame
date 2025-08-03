@@ -3,11 +3,8 @@ function CardItem({ id, value, imageBg, imageFr, onClickCard, isActive, isAside,
     return (
         <button
             className={`
-                ${grid == 2 ? 'p-[15px] rounded-[10px]' : ''}
-                ${grid == 4 ? 'p-[8px] rounded-[8px]' : ''}
-                ${grid == 6 ? 'p-[5px] rounded-[4px]' : ''}
-                ${isAside ? 'h-full w-[3px] rounded-[4px] p-[0px]' : 'aspect-[1] w-full '}
-                bg-white flex center justify-center 
+                ${isAside ? 'h-full w-[6%] rounded-[6px] p-[0px]' : 'aspect-[1] w-full rounded-[10%]'}
+                bg-white flex items-center justify-center transition-[0.2s] cursor-pointer
             `}
             type="button"
             disabled={isActive}
@@ -17,10 +14,10 @@ function CardItem({ id, value, imageBg, imageFr, onClickCard, isActive, isAside,
             <div
                 className={
                     isAside
-                        ? 'hidden rounded-[8px] bg-center bg-no-repeat shrink'
+                        ? 'hidden'
                         : isActive
-                            ? `${imageFr} w-[50%] aspect-[1] bg-contain rounded-[2px] bg-center bg-no-repeat`
-                            : `${imageBg} w-full aspect-[1] bg-cover cursor-pointer rounded-[2px] bg-center bg-no-repeat`
+                            ? `${imageFr} w-[50%] aspect-[1] bg-contain bg-center bg-no-repeat`
+                            : `${imageBg} w-[80%] aspect-[1] bg-cover rounded-[8%] bg-center bg-no-repeat`
                 }
             >
             </div>

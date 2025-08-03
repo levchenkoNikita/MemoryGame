@@ -53,7 +53,7 @@ const CardList = function ({ grid, setIsWin, setIsActiveLE }) {
         if (isAside) {
             const timer = setTimeout(() => {
                 setIsAside(false);
-            }, 100);
+            }, 150);
 
             return () => clearTimeout(timer);
         }
@@ -102,8 +102,7 @@ const CardList = function ({ grid, setIsWin, setIsActiveLE }) {
 
     return (
         <div className={`
-                size-card-clamp grid ${gridCol} place-items-center gap-[6px]
-                p-[20px]
+                size-card-clamp grid ${gridCol} place-items-center gap-[6px] mx-auto
             `}>
             {
                 realCardsGrid.map((el, index) => {
