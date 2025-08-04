@@ -1,12 +1,19 @@
-export const useRenderGrid = (cardsGrid, activeCards, isAside) => {
+export const useRenderGrid = (cardsGrid, activeCards, copyActiveCards, isAside) => {
     if (isAside) {
         if (activeCards[0].id === 0) {
-            return cardsGrid.map((el) => {
-                if (el.id === activeCards[0].id || el.id === activeCards[1].id) {
-                    return { ...el, isAside: true };
-                }
-                return { ...el };
-            })
+            if (copyActiveCards) {
+                return cardsGrid.map((el) => {
+                    if (el.id === copyActiveCards[0].id || el.id === copyActiveCards[1].id) {
+                        return { ...el, isAside: true };
+                    }
+                    return { ...el };
+                })
+            }
+            else {
+                return cardsGrid.map((el) => {
+                    return { ...el };
+                })
+            }
         }
         else if (activeCards[1].id === 0) {
             return cardsGrid.map((el) => {

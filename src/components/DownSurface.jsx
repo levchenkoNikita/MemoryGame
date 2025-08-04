@@ -34,7 +34,7 @@ function DownSurface( { onClickPlayButton, isStartPlay, isEndPlay } ) {
 
             {
                 isStartPlay 
-                ? <CardList grid={gridCards} setIsWin={(res) => setIsWin(res)} setIsActiveLE={() => setIsActiveLE(true)}/>
+                ? <CardList grid={gridCards} setIsWin={(res) => setIsWin(res)} isActiveLE={isActiveLE} setIsActiveLE={() => setIsActiveLE(true)}/>
                 : null
             }
             

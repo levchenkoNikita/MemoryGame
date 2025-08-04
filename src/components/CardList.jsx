@@ -4,7 +4,7 @@ import { getShuffledPairs } from "./scripts/sortCards";
 import { useRenderGrid } from "./hooks/useRenderGrid";
 import { countRoundContext } from "./Table";
 
-const CardList = function ({ grid, setIsWin, setIsActiveLE }) {
+const CardList = function ({ grid, setIsWin, isActiveLE, setIsActiveLE }) {
 
     const [cardsGrid, setCardsGrid] = useState(getShuffledPairs(grid));
     const imageBg = 'bg-[url("/card-back.png")]';
@@ -14,14 +14,15 @@ const CardList = function ({ grid, setIsWin, setIsActiveLE }) {
         6: "grid-cols-6"
     };
     const gridCol = gridClasses[grid];
-    const { countRound, setCountRound, setIsStartPlay } = useContext(countRoundContext);
+    const { countRound, setCountRound, isStartPlay, setIsStartPlay } = useContext(countRoundContext);
     const [isAside, setIsAside] = useState(false);
     const [activeCards, setActiveCards] = useState([
         { id: 0, value: 0 },
         { id: 0, value: 0 }
     ]);
+    const [copyActiveCards, setCopyActiveCards] = useState();
     const [countActiveCards, setCountActiveCards] = useState(0);
-    const realCardsGrid = useMemo(() => { return useRenderGrid(cardsGrid, activeCards, isAside) }, [cardsGrid, activeCards, isAside]);
+    const realCardsGrid = useMemo(() => { return useRenderGrid(cardsGrid, activeCards, copyActiveCards, isAside) }, [cardsGrid, activeCards, isAside]);
 
     useEffect(() => {
         if (activeCards[0].id !== 0 && activeCards[1].id !== 0 && isAside !== true) {
@@ -37,8 +38,11 @@ const CardList = function ({ grid, setIsWin, setIsActiveLE }) {
                 }
                 else {
                     setCountRound(prev => prev - 1);
+                    setIsAside(true);
+                    setCopyActiveCards(activeCards.map((el) => {
+                        return {...el};
+                    }));
                 }
-                // setIsAside(true); -- доделать обратную анимацию
                 setActiveCards([
                     { id: 0, value: 0 },
                     { id: 0, value: 0 }
@@ -53,6 +57,9 @@ const CardList = function ({ grid, setIsWin, setIsActiveLE }) {
         if (isAside) {
             const timer = setTimeout(() => {
                 setIsAside(false);
+                if(copyActiveCards) {
+                    setCopyActiveCards(null);
+                }
             }, 150);
 
             return () => clearTimeout(timer);
@@ -78,8 +85,8 @@ const CardList = function ({ grid, setIsWin, setIsActiveLE }) {
     useEffect(() => { setCardsGrid(getShuffledPairs(grid)) }, [grid]);
 
     const handleClickCard = (id, value) => {
-        if (isAside) {
-            // происходит анимация переворота карточки
+        if (isAside || isActiveLE) {
+            
         }
         else if (activeCards[0].id === 0) {
             setActiveCards([
