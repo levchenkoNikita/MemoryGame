@@ -34,43 +34,47 @@ function Timer() {
     useEffect(() => {
         if (isStartPlay) {
             let value = 0;
-            for(let i = 0; i < chooseList.length; i++) {
-                if(chooseList[i].isActive === true) {
+            for (let i = 0; i < chooseList.length; i++) {
+                if (chooseList[i].isActive === true) {
                     value = chooseList[i].value;
                     break;
                 }
             }
             setCountRound(value);
-            setCopyCountRound(value);
         }
         else {
             setCountProgress(0);
             setProgressList(prev => prev.map((el, index) => {
-                if(index === 0) {
-                    return {...el, isActive: true};
+                if (index === 0) {
+                    return { ...el, isActive: true };
                 }
                 else {
-                    return {...el, isActive: false};
+                    return { ...el, isActive: false };
                 }
             }))
         }
     }, [isStartPlay])
 
     useEffect(() => {
-        if(isStartPlay) {
-            const newArray = [];
-            let obj = {};
-            for(let i = 0; i < progressList.length; i++) {
-                if(i === countProgress) {
-                    obj = {...progressList[i], isActive: true};
-                } else {
-                    obj = {...progressList[i], isActive: false};
-                }
-                newArray.push(obj);
-                obj = {};
+        if (isStartPlay) {
+            if (countRound === 0) {
+                
             }
-            setProgressList([...newArray]);
-            setCountProgress(prev => prev + 1);
+            else {
+                const newArray = [];
+                let obj = {};
+                for (let i = 0; i < progressList.length; i++) {
+                    if (i === countProgress) {
+                        obj = { ...progressList[i], isActive: true };
+                    } else {
+                        obj = { ...progressList[i], isActive: false };
+                    }
+                    newArray.push(obj);
+                    obj = {};
+                }
+                setProgressList([...newArray]);
+                setCountProgress(prev => prev + 1);
+            }
         }
     }, [countRound])
 

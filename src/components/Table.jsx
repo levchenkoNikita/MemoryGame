@@ -6,7 +6,6 @@ const countRoundContext = createContext();
 
 function Table() {
     const [countRound, setCountRound] = useState(1);
-    const [copyCountRound, setCopyCountRound] = useState(1);
     const [isStartPlay, setIsStartPlay] = useState(false);
 
     function handleStartPlay() {
@@ -15,12 +14,12 @@ function Table() {
 
     function handleEndPlay() {
         setIsStartPlay(false);
-        setCountRound(copyCountRound);
+        setCountRound(1);
     }
 
     return (
         <div className="w-full h-screen font-Stint overflow-hidden">
-            <countRoundContext.Provider value={ { countRound, setCountRound, setCopyCountRound, isStartPlay, setIsStartPlay} }>
+            <countRoundContext.Provider value={ { countRound, setCountRound, isStartPlay, setIsStartPlay} }>
                 <UpSurface>
 
                 </UpSurface>
