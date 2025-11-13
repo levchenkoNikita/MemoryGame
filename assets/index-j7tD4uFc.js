@@ -54,7 +54,7 @@ Error generating stack: `+u.message+`
                         h-full w-[10%] relative z-1 translate-y-[4px]
                         bg-contain bg-center bg-no-repeat
                         ${p?"bg-[url('/arrow-progress.png')]":"bg-transparent"}
-                    `,htmlFor:E}),Y.jsx("input",{className:"hidden",type:"radio",name:"progress",id:E,value:D,disabled:!0})]}),wr=()=>{const[E,D]=el.useState([{id:50,value:1,isActive:!0},{id:51,value:2,isActive:!1},{id:52,value:3,isActive:!1},{id:53,value:4,isActive:!1},{id:54,value:5,isActive:!1},{id:55,value:6,isActive:!1},{id:56,value:7,isActive:!1},{id:57,value:8,isActive:!1},{id:58,value:9,isActive:!1},{id:59,value:10,isActive:!1}]);return[E,D]},fv=({value:E,isLast:D,onClick:p})=>Y.jsx("button",{className:`h-full w-[10%]
+                    `,htmlFor:E}),Y.jsx("input",{className:"hidden",type:"radio",name:"progress",id:E,value:D,disabled:!0})]}),wr=()=>{const[E,D]=el.useState([{id:50,value:1,isActive:!1},{id:51,value:2,isActive:!1},{id:52,value:3,isActive:!1},{id:53,value:4,isActive:!1},{id:54,value:5,isActive:!1},{id:55,value:6,isActive:!1},{id:56,value:7,isActive:!1},{id:57,value:8,isActive:!1},{id:58,value:9,isActive:!1},{id:59,value:10,isActive:!0}]);return[E,D]},fv=({value:E,isLast:D,onClick:p})=>Y.jsx("button",{className:`h-full w-[10%]
                     flex items-center justify-center relative
                     ${D?"":`
                             after:content-[''] after:w-[10%] after:aspect-[1] after:bg-black after:rounded-full
