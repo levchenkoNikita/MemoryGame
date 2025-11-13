@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 const useProgressList = () => {
     const [progressList, setProgressList] = useState([
-        { id: 50, value: 1, isActive: true },
+        { id: 50, value: 1, isActive: false },
         { id: 51, value: 2, isActive: false },
         { id: 52, value: 3, isActive: false },
         { id: 53, value: 4, isActive: false },
@@ -11,7 +11,7 @@ const useProgressList = () => {
         { id: 56, value: 7, isActive: false },
         { id: 57, value: 8, isActive: false },
         { id: 58, value: 9, isActive: false },
-        { id: 59, value: 10, isActive: false }
+        { id: 59, value: 10, isActive: true }
     ]);
 
     return [progressList, setProgressList];
